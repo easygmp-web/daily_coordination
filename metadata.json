@@ -1,0 +1,8 @@
+{
+  "name": "Remix 데일리코디",
+  "description": "나에게 딱 맞는 하루 옷차림을 추천해 주는 데일리코디 첫 화면",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
