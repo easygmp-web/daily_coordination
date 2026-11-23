@@ -55,6 +55,22 @@ async function startServer() {
     next(err);
   });
 
+  app.options('/api/health', (req: Request, res: Response) => {
+    applyDevCors(req, res, 'GET, OPTIONS');
+    res.status(204).end();
+  });
+
+  app.get('/api/health', (req: Request, res: Response) => {
+    applyDevCors(req, res, 'GET, OPTIONS');
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({
+      ok: true,
+      nodeVersion: process.version,
+      geminiConfigured: Boolean(process.env.GEMINI_API_KEY?.trim()),
+      timestamp: new Date().toISOString(),
+    });
+  });
+
   app.options('/api/weather', (req: Request, res: Response) => {
     applyDevCors(req, res, 'GET, OPTIONS');
     res.status(204).end();
